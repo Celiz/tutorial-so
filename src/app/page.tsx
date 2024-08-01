@@ -1,113 +1,188 @@
-import Image from "next/image";
+// pages/index.js
+import Head from 'next/head'
+import Link from 'next/link'
+
+const sections = [
+  { id: 'preparacion', title: 'Preparación' },
+  { id: 'usb-booteable', title: 'USB Booteable' },
+  { id: 'bios-uefi', title: 'BIOS/UEFI' },
+  { id: 'instalacion', title: 'Instalación' },
+  { id: 'post-instalacion', title: 'Post-Instalación' },
+]
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <div className="min-h-screen bg-blue-50">
+      <Head>
+        <title>Guía de Instalación de Windows</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <header className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-8">
+        <div className="container mx-auto px-4">
+          <h1 className="text-4xl font-bold">Guía de Instalación de Windows</h1>
+          <p className="mt-2 text-xl">Tutorial completo para instalar Windows en tu notebook</p>
         </div>
-      </div>
+      </header>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <nav className="bg-white shadow-md sticky top-0 z-10">
+        <div className="container mx-auto px-4">
+          <div className="flex justify-between items-center py-4">
+            <Link href="/" className="text-gray-800 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">
+              Inicio
+            </Link>
+            <div className="hidden md:flex">
+              {sections.map((section) => (
+                <Link
+                  key={section.id}
+                  href={`#${section.id}`}
+                  className="text-gray-800 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  {section.title}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      </nav>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      <main className="container mx-auto px-4 py-8">
+        <section id="preparacion" className="mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-blue-800">1. Preparación</h2>
+          <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">1.1 Requisitos mínimos:</h3>
+            <ul className="list-disc pl-6 mb-4 text-gray-700">
+              <li>Procesador: 1 gigahertz (GHz) o más rápido</li>
+              <li>RAM: 1 gigabyte (GB) para 32 bits o 2 GB para 64 bits</li>
+              <li>Espacio en disco duro: 16 GB para 32 bits o 20 GB para 64 bits</li>
+              <li>Tarjeta gráfica: DirectX 9 o posterior con controlador WDDM 1.0</li>
+              <li>Pantalla: 800x600 píxeles</li>
+            </ul>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">1.2 Materiales necesarios:</h3>
+            <ul className="list-disc pl-6 mb-4 text-gray-700">
+              <li>Notebook</li>
+              <li>Dispositivos de entrada (teclado y mouse)</li>
+              <li>Imagen ISO de Windows</li>
+              <li>Unidad USB (mínimo 8 GB)</li>
+              <li>Programa para crear USB Booteable (Rufus recomendado)</li>
+            </ul>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">1.3 Preparación del entorno:</h3>
+            <ul className="list-disc pl-6 mb-4 text-gray-700">
+              <li>Respalda tus datos</li>
+              <li>Coloca la notebook en un lugar limpio y bien iluminado</li>
+              <li>Asegúrate de que la notebook esté cargada</li>
+            </ul>
+          </div>
+        </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+        <section id="usb-booteable" className="mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-blue-800">2. USB Booteable</h2>
+          <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">2.1 Descargar Media Creation Tool:</h3>
+            <p className="text-gray-700 mb-4">
+              Visita el <a href="https://www.microsoft.com/es-es/software-download/windows10" className="text-blue-600 hover:underline">sitio oficial de Microsoft</a> y descarga la herramienta.
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">2.2 Preparación del USB:</h3>
+            <p className="text-gray-700 mb-4">
+              Inserta el USB en un puerto disponible y respalda cualquier dato importante en él.
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">2.3 Ejecución de Media Creation Tool:</h3>
+            <p className="text-gray-700 mb-4">
+              Ejecuta el archivo descargado, acepta los términos de licencia, y selecciona "Crear medios de instalación".
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">2.4 Configuración del medio de instalación:</h3>
+            <ul className="list-disc pl-6 mb-4 text-gray-700">
+              <li>Selecciona el idioma, la edición, y la arquitectura de Windows</li>
+              <li>Selecciona "Unidad flash USB" y elige tu unidad USB</li>
+            </ul>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">2.5 Proceso de creación:</h3>
+            <p className="text-gray-700 mb-4">
+              Media Creation Tool descargará Windows y creará el medio de instalación en el USB.
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">2.6 Finalización:</h3>
+            <p className="text-gray-700 mb-4">
+              Al completar el proceso, expulsa de forma segura el USB.
+            </p>
+          </div>
+        </section>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+        <section id="bios-uefi" className="mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-blue-800">3. BIOS/UEFI</h2>
+          <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">3.1 Acceso al BIOS/UEFI:</h3>
+            <p className="text-gray-700 mb-4">
+              Apaga y enciende la notebook presionando repetidamente la tecla de acceso (F2, F10, Del, Esc, etc.).
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">3.2 Navegación en el BIOS/UEFI:</h3>
+            <p className="text-gray-700 mb-4">
+              Usa las teclas de flecha para navegar y Enter para seleccionar opciones.
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">3.3 Cambiar el orden de arranque:</h3>
+            <p className="text-gray-700 mb-4">
+              Ve a la sección de "Boot" y selecciona tu USB como primera opción de arranque.
+            </p>
+          </div>
+        </section>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+        <section id="instalacion" className="mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-blue-800">4. Instalación</h2>
+          <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">4.1 Arranque desde el USB:</h3>
+            <p className="text-gray-700 mb-4">
+              Inserta el USB y arranca la notebook desde él.
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">4.2 Pantalla de instalación:</h3>
+            <p className="text-gray-700 mb-4">
+              Selecciona el idioma, formato de hora y teclado. Introduce la clave de producto si es necesario.
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">4.3 Selección y partición del disco:</h3>
+            <p className="text-gray-700 mb-4">
+              Selecciona la unidad donde instalarás Windows y crea las particiones necesarias.
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">4.4 Configuración inicial:</h3>
+            <p className="text-gray-700 mb-4">
+              Configura las preferencias regionales, la conexión a la red, y la cuenta de usuario.
+            </p>
+          </div>
+        </section>
+
+        <section id="post-instalacion" className="mb-12">
+          <h2 className="text-3xl font-bold mb-4 text-blue-800">5. Post-Instalación</h2>
+          <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-300">
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">5.1 Actualizaciones de Windows:</h3>
+            <p className="text-gray-700 mb-4">
+              Ve a "Actualización y seguridad" y busca actualizaciones.
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">5.2 Instalación de controladores:</h3>
+            <p className="text-gray-700 mb-4">
+              Descarga e instala los controladores desde el sitio web del fabricante.
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">5.3 Instalación de software esencial:</h3>
+            <ul className="list-disc pl-6 mb-4 text-gray-700">
+              <li>Navegador web</li>
+              <li>Suite de ofimática</li>
+              <li>Lector de PDF</li>
+              <li>Compresor de archivos</li>
+              <li>Reproductor multimedia</li>
+            </ul>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">5.4 Configuración de seguridad:</h3>
+            <p className="text-gray-700 mb-4">
+              Instala un antivirus y verifica que el firewall esté activado.
+            </p>
+            <h3 className="text-xl font-semibold mb-3 text-blue-600">5.5 Optimización del rendimiento:</h3>
+            <p className="text-gray-700 mb-4">
+              Configura programas de inicio y ajusta configuraciones para mejorar el rendimiento.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-6">
+        <div className="container mx-auto px-4 text-center">
+          <p>&copy; 2024 Guía de Instalación de Windows. Creado por Matias N. Celiz Ramos</p>
+          <p className="mt-2">EESTN°5 "Amancio Williams" - 7°4° Informática</p>
+        </div>
+      </footer>
+    </div>
+  )
 }
